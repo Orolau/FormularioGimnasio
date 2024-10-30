@@ -1,0 +1,126 @@
+/* Global Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f3e8ff; /* Fondo claro en tono violeta */
+  display: flex;               /* Usar flexbox */
+  justify-content: center;     /* Centrar horizontalmente */
+  align-items: center;         /* Centrar verticalmente */
+  height: 100vh;              /* Usar el 100% de la altura de la ventana */
+}
+
+/* Form Container */
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  max-width: 500px;
+  margin: auto;               /* Centering */
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(128, 0, 128, 0.1); /* Sombra en tono púrpura */
+}
+
+h3 {
+  text-align: center;
+  color: #5d3a9b; /* Tono morado intenso */
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+/* Form Group */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  font-size: 1rem;
+  color: #6a0dad; /* Tono púrpura intermedio */
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #d1c4e9; /* Borde suave en tono lila */
+  border-radius: 5px;
+  transition: border-color 0.3s ease;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #7e57c2; /* Borde morado intenso al hacer foco */
+}
+
+/* Error Messages */
+.form-group div {
+  color: #b71c1c; /* Rojo oscuro para errores */
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
+
+/* Button Styles */
+button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #7e57c2; /* Botón morado */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+  width: 100%;
+}
+
+button:hover {
+  background-color: #5d3a9b; /* Oscurece el morado al pasar el mouse */
+}
+
+button:disabled {
+  background-color: #d1c4e9; /* Botón grisáceo si está deshabilitado */
+}
+
+/* Back Button */
+button.back-button {
+  background-color: #9c27b0; /* Color lila oscuro para el botón Atrás */
+  margin-top: 10px;
+  width: auto;
+  padding: 8px 16px;
+}
+
+button.back-button:hover {
+  background-color: #7b1fa2; /* Oscurece el lila para el hover */
+}
+
+.button-container {
+  display: flex; /* Usamos flexbox para alinear los botones en línea */
+  justify-content: space-between; /* Espacio entre los botones */
+  margin-top: 20px; /* Espacio superior opcional para separación del formulario */
+}
+
+.button-container button {
+  padding: 10px 20px; /* Espaciado interno para los botones */
+  background-color: #6a0dad; /* Color de fondo morado */
+  color: white; /* Color del texto */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cursor de mano al pasar sobre el botón */
+  transition: background-color 0.3s; /* Transición suave para el color de fondo */
+}
+
+.button-container button:hover {
+  background-color: #4b0082; /* Color de fondo al pasar el cursor */
+}
+
+/* Añadir margen derecho al botón "Atrás" */
+.button-container button:first-child {
+  margin-right: 10px; /* Espacio entre los botones */
+}
+
