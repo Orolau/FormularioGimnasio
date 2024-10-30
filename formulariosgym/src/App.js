@@ -1,14 +1,15 @@
 import './App.css';
-import { useState} from 'react';
+import { useState } from 'react';
 import FormTrainingData from './components/FormTrainingData';
 import FormDatosPago from './components/FormDatosPago';
 import FormPersonalData from './components/FormPersonalData';
 import FormLocation from './components/FormLacation';
 import ProgressBar from './components/ProgressBar';
+import ShowAllData from './components/ShowAllData';
 
 function App() {
   const totalSteps = 5;
-  const [numForm, setNumForm] = useState(0)
+  const [numForm, setNumForm] = useState(0);
   const [allData, setAllData] = useState({
     personalData: {
       name: "", surname: "", email: "", telephone: ""
@@ -20,15 +21,14 @@ function App() {
       type: "", objectives: "", disponibility: ""
     },
     paymentData: {
-       numeroTarjeta: "", cvv: "", expDateTarjeta: ""
+      numeroTarjeta: "", cvv: "", expMonth: "", expYear: ""
     }
   });
 
   const handleClickBack = () => {
     setNumForm(numForm - 1);
-    if (numForm == -1)
-      setNumForm(0);
-  }
+    if (numForm === 0) setNumForm(0);
+  };
 
   const submitEspecificPart = (data, type) => {
     const newData = { ...allData };
@@ -37,7 +37,7 @@ function App() {
   };
 
   const handleSubmit = () => {
-    fetch('https:://apiFitnes.com/posts',
+    fetch('https://apiFitnes.com/posts',
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -46,10 +46,11 @@ function App() {
     )
       .then(response => response.json())
       .then(data => console.log(data))
-      .catch(error => console.log('No se puede conectar con la API. Estos son los datos que se quieren enviar'+
-        allData.personalData + allData.locationData + allData.trainingData + allData.paymentData
-      ));
-  }
+      .catch(error => {
+        console.log('No se puede conectar con la API.');
+        console.log('Estos son los datos que se quieren enviar:', JSON.stringify(allData, null, 2));
+      });
+  };
 
   return (
     <div className="App">
@@ -72,15 +73,16 @@ function App() {
       }
       {
         numForm === 4 &&
-        <>
-          <h3>Ya se han rellenado todos los datos</h3>
-          <button onClick={handleSubmit}>Enviar</button>
-        </>
-
+        <div>
+          <ShowAllData allData={allData} />
+          <div className="button-container">
+            <button type="button" onClick={handleClickBack}>Atrás</button>
+            <button onClick={handleSubmit}>Enviar</button>
+          </div>
+        </div>
       }
-      
     </div>
+
   );
 }
-
 export default App;
